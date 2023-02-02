@@ -25,7 +25,7 @@ public class Team{
             /** Adding the User Input the Name of the Players **/
 //            Scanner obj=new Scanner(System.in);
 //            String PlayerName=obj.nextLine();
-            String PlayerName="player "+i;
+            String PlayerName="player"+i;
             players.add(new Player(PlayerName,TeamName,Team.RandomRating(),Team.RandomRating()));
         }
     }

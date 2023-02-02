@@ -33,6 +33,17 @@ public class Match {
             battingTeam=team2;
             ballingTeam=team1;
         }
+        System.out.println("Team Name"+"     "+"Batting Rating" +"     "+"Balling Rating");
+        System.out.println("Team "+battingTeam.TeamName+":");
+        for(int i=0;i<11;i++)
+        {
+            System.out.println(battingTeam.players.get(i).PlayerName+"         "+battingTeam.players.get(i).getBatsManRating()+"          "+battingTeam.players.get(i).getBallerRating());
+        }
+        System.out.println("Team "+ballingTeam.TeamName+":");
+        for(int i=0;i<11;i++)
+        {
+            System.out.println(ballingTeam.players.get(i).PlayerName+"          "+ballingTeam.players.get(i).getBatsManRating()+"          "+ballingTeam.players.get(i).getBallerRating());
+        }
         match.matchPlaying(battingTeam,ballingTeam);
         match.matchPlaying(ballingTeam,battingTeam);
         if(battingTeam.getRuns()>ballingTeam.getRuns())
