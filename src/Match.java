@@ -33,8 +33,20 @@ public class Match {
             battingTeam=team2;
             ballingTeam=team1;
         }
-
-
+        match.matchPlaying(battingTeam,ballingTeam);
+        match.matchPlaying(ballingTeam,battingTeam);
+        if(battingTeam.getRuns()>ballingTeam.getRuns())
+        {
+            System.out.println(battingTeam.TeamName+" won the Match");
+        }
+        else if(battingTeam.getRuns()<ballingTeam.getRuns())
+        {
+            System.out.println(ballingTeam.TeamName+" won the Match");
+        }
+        else
+        {
+            System.out.println("Match Draws.");
+        }
     }
     public void matchPlaying(Team battingTeam,Team ballingTeam)
     {
@@ -64,11 +76,15 @@ public class Match {
                     break;
                 }
             }
+            System.out.println("Over"+(i+1)+": "+battingTeam.TeamName+" "+battingTeam.getRuns()+"/"+batsmanIdx);
             if(batsmanIdx>=battingTeam.players.size())
             {
                 break;
             }
         }
+        System.out.println();
+        System.out.println();
+        System.out.println();
     }
     public static Match matchInstance()
     {
