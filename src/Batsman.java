@@ -2,8 +2,8 @@ public class Batsman extends Player{
     Batsman(){}
     Batsman(String PlayerName,String TeamName,int batsManRating)
     {
-        this.PlayerName=PlayerName;
-        this.TeamName=TeamName;
+        this.playerName =PlayerName;
+        this.teamName =TeamName;
         this.batsManRating=batsManRating;
     }
     private int batsManRating=-1;

@@ -1,9 +1,14 @@
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
 public class Match {
     static Match match;
+    public static Match matchInstance() {
+        if (match == null) {
+            match = new Match();
+        }
+        return match;
+    }
     private int totalOver = 0;
 
     public int getTotalOver() {
@@ -24,53 +29,52 @@ public class Match {
         System.out.println("Enter Total Number of Overs? ");
         match.setTotalOver(Integer.parseInt(obj.nextLine()));
         System.out.println("Enter the Toss Chosen by Team1?(0/1) ");
-        TeamCurrentMatch battingTeam, ballingTeam;
+        InningScoreCardOfTheMatch battingTeam, ballingTeam;
         if (Toss.toss(Integer.parseInt(obj.nextLine()))) {
-            battingTeam = new TeamCurrentMatch(team1);
-            ballingTeam = new TeamCurrentMatch(team2);
+            battingTeam = new InningScoreCardOfTheMatch(team1);
+            ballingTeam = new InningScoreCardOfTheMatch(team2);
         } else {
-            battingTeam = new TeamCurrentMatch(team2);
-            ballingTeam = new TeamCurrentMatch(team1);
+            battingTeam = new InningScoreCardOfTheMatch(team2);
+            ballingTeam = new InningScoreCardOfTheMatch(team1);
         }
-        match.matchPlaying(battingTeam, ballingTeam);
-        match.matchPlaying(ballingTeam, battingTeam);
-        if (battingTeam.getCurrentRuns() > ballingTeam.getCurrentRuns()) {
-            System.out.println(battingTeam.team.TeamName + " won the Match");
-        } else if (battingTeam.getCurrentRuns() < ballingTeam.getCurrentRuns()) {
-            System.out.println(ballingTeam.team.TeamName + " won the Match");
+        match.inningOfTheMatch(battingTeam, ballingTeam);
+        match.inningOfTheMatch(ballingTeam, battingTeam);
+        if (battingTeam.getTeamRunsOfThisMatch() > ballingTeam.getTeamRunsOfThisMatch()) {
+            System.out.println(battingTeam.team.teamName + " won the Match");
+        } else if (battingTeam.getTeamRunsOfThisMatch() < ballingTeam.getTeamRunsOfThisMatch()) {
+            System.out.println(ballingTeam.team.teamName + " won the Match");
         } else {
             System.out.println("Match Draws.");
         }
     }
-
-    public void matchPlaying(TeamCurrentMatch battingTeam, TeamCurrentMatch ballingTeam) {
+    public void inningOfTheMatch(InningScoreCardOfTheMatch battingTeam, InningScoreCardOfTheMatch ballingTeam) {
         System.out.println("Match Starts");
-        System.out.println(battingTeam.team.TeamName + " is doing Batting against " + ballingTeam.team.TeamName);
+        System.out.println(battingTeam.team.teamName + " is doing Batting against " + ballingTeam.team.teamName);
         int BattingIdx = 0, BallingIdx = 0;
 
-        Collections.sort(battingTeam.team.players, new SortByBatsmanRatings());
-        Collections.sort(ballingTeam.team.players, new SortByBallerRatings());
+        Collections.sort(battingTeam.team.playersList, new SortByBatsmanRatings());
+        Collections.sort(ballingTeam.team.playersList, new SortByBallerRatings());
         for (int i = 0; i < this.totalOver; i++) {
             for (int j = 0; j < 6; j++) {
-                Baller battingPlayer = battingTeam.team.players.get(BattingIdx), ballerPlayer = ballingTeam.team.players.get(BallingIdx);
-                Object r = match.RandomBall(battingPlayer.getBatsManRating(), ballerPlayer.getBallerRating());
+                Baller battingPlayer = battingTeam.team.playersList.get(BattingIdx), ballerPlayer = ballingTeam.team.playersList.get(BallingIdx);
+                Object r = match.RandomBallGenerator(battingPlayer.getBatsManRating(), ballerPlayer.getBallerRating());
                 if (r.equals('W')) {
                     ballerPlayer.addWicket();
                     ballingTeam.addWicketOfPlayer(ballerPlayer);
-                    System.out.println(battingPlayer.PlayerName + " has been out against " + ballerPlayer.PlayerName);
+                    System.out.println(battingPlayer.playerName + " has been out against " + ballerPlayer.playerName);
                     BattingIdx++;
                 } else {
                     battingTeam.addCurrentRuns((int) r);
                     battingPlayer.addRuns((int) r);
                     battingTeam.addRunOfPlayer(battingPlayer, (int) r);
-                    System.out.println(battingPlayer.PlayerName + " has scored " + r + " against " + ballerPlayer.PlayerName);
+                    System.out.println(battingPlayer.playerName + " has scored " + r + " against " + ballerPlayer.playerName);
                 }
-                if (BattingIdx >= battingTeam.team.players.size()) {
+                if (BattingIdx >= battingTeam.team.playersList.size()) {
                     break;
                 }
             }
-            System.out.println("Over" + (i + 1) + ": " + battingTeam.team.TeamName + " " + battingTeam.getCurrentRuns() + "/" + BattingIdx);
-            if (BattingIdx >= battingTeam.team.players.size()) {
+            System.out.println("Over" + (i + 1) + ": " + battingTeam.team.teamName + " " + battingTeam.getTeamRunsOfThisMatch() + "/" + BattingIdx);
+            if (BattingIdx >= battingTeam.team.playersList.size()) {
                 break;
             }
             BallingIdx = (BallingIdx + 1) % 11;
@@ -82,19 +86,14 @@ public class Match {
     }
 
 
-    public static Match matchInstance() {
-        if (match == null) {
-            match = new Match();
-        }
-        return match;
-    }
 
 
-    public Object RandomBall(int batsmanRating, int ballerRating) {
+
+    public Object RandomBallGenerator(int batsmanRating, int ballerRating) {
         int arr[] = {0, 1, 2, 3, 4, 5, 6, 7};
         int ii = batsmanRating - ballerRating;
 //        int x=ii,y=10-ii;
-        int[] freq = new int[]{};
+        int[] freq;
         if (ii > 0) {
             freq = new int[]{5, 5, 5, 5, 25, 25, 25, 5};
         } else if (ii == 0) {
@@ -108,7 +107,7 @@ public class Match {
 //
     }
 
-    class GenerateRandom {
+    static class GenerateRandom {
 
         // Utility function to find ceiling of r in arr[l..h]
         static int findCeil(int arr[], int r, int l, int h) {

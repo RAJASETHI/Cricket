@@ -4,8 +4,8 @@ public class Baller extends Batsman{
 
     Baller(String PlayerName,String TeamName,int batsManRating,int ballerRating)
     {
-        this.PlayerName=PlayerName;
-        this.TeamName=TeamName;
+        this.playerName =PlayerName;
+        this.teamName =TeamName;
         this.ballerRating=batsManRating;
         super.setBatsManRating(batsManRating);
     }

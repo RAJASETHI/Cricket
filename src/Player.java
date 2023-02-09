@@ -1,6 +1,4 @@
-import java.util.Comparator;
-
-abstract class Player{
-    String PlayerName;
-    String TeamName;
+ class Player{
+    String playerName;
+    String teamName;
 }
