@@ -1,8 +1,8 @@
 import java.util.Comparator;
 
-public class Baller extends Batsman{
+public class Bowler extends Batsman{
 
-    Baller(String PlayerName,String TeamName,int batsManRating,int ballerRating)
+    Bowler(String PlayerName, String TeamName, int batsManRating, int ballerRating)
     {
         this.playerName =PlayerName;
         this.teamName =TeamName;
@@ -24,15 +24,15 @@ public class Baller extends Batsman{
         return this.wickets;
     }
 }
-class SortByBallerRatings implements Comparator<Baller> {
-    public int compare(Baller a,Baller b)
+class SortByBowlerRatings implements Comparator<Bowler> {
+    public int compare(Bowler a, Bowler b)
     {
         return b.getBallerRating()-a.getBallerRating();
     }
 }
 
-class SortByBatsmanRatings implements Comparator<Baller> {
-    public int compare(Baller a,Baller b)
+class SortByBatsmanRatings implements Comparator<Bowler> {
+    public int compare(Bowler a, Bowler b)
     {
         return b.getBatsManRating()-a.getBatsManRating();
     }

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Team {
     String teamName;
-    ArrayList<Baller> playersList;
+    ArrayList<Bowler> playersList;
 
     static int RandomRating() {
         return ((int) (Math.random() * 11)) % 10;
@@ -13,7 +13,7 @@ public class Team {
         playersList = new ArrayList<>();
         for (int i = 1; i <= 11; i++) {
             String PlayerName = "player" + i;
-            playersList.add(new Baller(PlayerName, teamName, Team.RandomRating(), Team.RandomRating()));
+            playersList.add(new Bowler(PlayerName, teamName, Team.RandomRating(), Team.RandomRating()));
         }
     }
 }

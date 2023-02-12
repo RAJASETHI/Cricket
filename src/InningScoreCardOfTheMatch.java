@@ -9,11 +9,11 @@ public class InningScoreCardOfTheMatch {
     /**
      * {player,{runs,balls}}
      **/
-    private final HashMap<Baller, ArrayList<Integer>> BatsmenScoreCard;
+    private final HashMap<Bowler, ArrayList<Integer>> BatsmenScoreCard;
     /**
      * {player,wicket}
      **/
-    private final HashMap<Baller, Integer> BallersScoreCard;
+    private final HashMap<Bowler, Integer> BallersScoreCard;
 
     InningScoreCardOfTheMatch(Team team) {
         this.team = team;
@@ -33,11 +33,11 @@ public class InningScoreCardOfTheMatch {
         this.TeamBallsPlayedOfThisMatch++;
     }
 
-    public void addWicketOfPlayer(Baller player) {
+    public void addWicketOfPlayer(Bowler player) {
         BallersScoreCard.put(player, BallersScoreCard.getOrDefault(player, 0) + 1);
     }
 
-    public void addRunOfPlayer(Baller player, int runs) {
+    public void addRunOfPlayer(Bowler player, int runs) {
         if (BatsmenScoreCard.containsKey(player)) {
             int r = BatsmenScoreCard.get(player).get(0) + runs;
             int b = BatsmenScoreCard.get(player).get(1) + 1;

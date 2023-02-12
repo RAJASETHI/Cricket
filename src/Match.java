@@ -53,26 +53,27 @@ public class Match {
         int BattingIdx = 0, BallingIdx = 0;
 
         Collections.sort(battingTeam.team.playersList, new SortByBatsmanRatings());
-        Collections.sort(ballingTeam.team.playersList, new SortByBallerRatings());
+        Collections.sort(ballingTeam.team.playersList, new SortByBowlerRatings());
         for (int i = 0; i < this.totalOver; i++) {
             for (int j = 0; j < 6; j++) {
-                Baller battingPlayer = battingTeam.team.playersList.get(BattingIdx), ballerPlayer = ballingTeam.team.playersList.get(BallingIdx);
-                Object r = match.RandomBallGenerator(battingPlayer.getBatsManRating(), ballerPlayer.getBallerRating());
+                Bowler battingPlayer = battingTeam.team.playersList.get(BattingIdx), bowlerPlayer = ballingTeam.team.playersList.get(BallingIdx);
+                Object r = match.RandomBallGenerator(battingPlayer.getBatsManRating(), bowlerPlayer.getBallerRating());
                 if (r.equals('W')) {
-                    ballerPlayer.addWicket();
-                    ballingTeam.addWicketOfPlayer(ballerPlayer);
-                    System.out.println(battingPlayer.playerName + " has been out against " + ballerPlayer.playerName);
+                    bowlerPlayer.addWicket();
+                    ballingTeam.addWicketOfPlayer(bowlerPlayer);
+                    System.out.println(battingPlayer.playerName + " has been out against " + bowlerPlayer.playerName);
                     BattingIdx++;
                 } else {
                     battingTeam.addCurrentRuns((int) r);
                     battingPlayer.addRuns((int) r);
                     battingTeam.addRunOfPlayer(battingPlayer, (int) r);
-                    System.out.println(battingPlayer.playerName + " has scored " + r + " against " + ballerPlayer.playerName);
+                    System.out.println(battingPlayer.playerName + " has scored " + r + " against " + bowlerPlayer.playerName);
                 }
                 if (BattingIdx >= battingTeam.team.playersList.size()) {
                     break;
                 }
             }
+            System.out.println();
             System.out.println("Over" + (i + 1) + ": " + battingTeam.team.teamName + " " + battingTeam.getTeamRunsOfThisMatch() + "/" + BattingIdx);
             if (BattingIdx >= battingTeam.team.playersList.size()) {
                 break;
