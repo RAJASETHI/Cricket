@@ -1,4 +1,4 @@
-package com.cricketGame.cricketgame.Enum;
+package com.cricketGame.cricketgame.enums;
 
 public enum CoinSide {
     HEADS,

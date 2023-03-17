@@ -1,6 +1,6 @@
 package com.cricketGame.cricketgame.utils;
 
-import com.cricketGame.cricketgame.Enum.CoinSide;
+import com.cricketGame.cricketgame.enums.CoinSide;
 
 public class Toss {
     // add enum.

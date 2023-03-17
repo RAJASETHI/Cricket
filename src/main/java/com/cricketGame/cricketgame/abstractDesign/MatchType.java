@@ -1,4 +1,4 @@
-package com.cricketGame.cricketgame.mclass;
+package com.cricketGame.cricketgame.abstractDesign;
 
 import com.cricketGame.cricketgame.model.Match;
 

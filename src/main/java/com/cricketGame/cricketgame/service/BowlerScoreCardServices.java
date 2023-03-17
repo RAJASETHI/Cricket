@@ -21,14 +21,5 @@ public class BowlerScoreCardServices {
     {
         bowlerScoreCardRepository.save(bowlerScoreCard);
         return "Added the Batsman Details Successfully!!";
-//        try
-//        {
-//            BowlerScoreCard fetchIfAlreadyExist=bowlerScoreCardRepository.findByPlayerIdAndMatchIdAndInningScoreCardId(bowlerScoreCard.getPlayerId(),bowlerScoreCard.getMatchId(),bowlerScoreCard.getInningScoreCardId());
-//            return "Batsman Already played the Match";
-//        }
-//        catch(Exception e)
-//        {
-//            return "Added the Batsman Details Successfully!!";
-//        }
     }
 }

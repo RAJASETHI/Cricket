@@ -1,35 +1,53 @@
 package com.cricketGame.cricketgame.controller;
 
+import com.cricketGame.cricketgame.Request.TeamRequest;
+import com.cricketGame.cricketgame.Response.PlayerResponse;
+import com.cricketGame.cricketgame.Response.TeamResponse;
 import com.cricketGame.cricketgame.model.Team;
 import com.cricketGame.cricketgame.repository.TeamRepository;
 import com.cricketGame.cricketgame.service.TeamServices;
 import jakarta.validation.Valid;
+
+import com.cricketGame.cricketgame.model.Player;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/team")
 public class TeamController {
     @Autowired
-    private TeamRepository teamRepository;
-    @Autowired
     private TeamServices teamServices;
-    @PostMapping("/createTeam")
-    public String addTeam(@RequestBody @Valid Team team)
+    @GetMapping("/all")
+    public ResponseEntity<List<TeamResponse>> showAllTeams()
     {
-        return teamServices.addTeamService(team);
-    }
-    @GetMapping("/allTeams")
-    public List<Team> showAllTeams()
-    {
-        return teamServices.showAllTeamsService();
+        return new ResponseEntity<>( teamServices.showAllTeamsService(),HttpStatus.OK);
     }
 
-    @PostMapping("/removeTeam")
-    public String removeTeamByTeamId(@RequestParam String teamId)
+
+    @GetMapping(value="/{teamId}")
+    public ResponseEntity<ArrayList<PlayerResponse>> showPlayersOfTeam(@PathVariable String teamId) throws Exception {
+        return new ResponseEntity<>(teamServices.showPlayersOfTeam(teamId),HttpStatus.OK);
+    }
+    @PostMapping("/")
+    public ResponseEntity<TeamResponse> addTeam(@RequestBody @Valid TeamRequest teamRequest)
     {
-        return teamServices.removeTeamByTeamIdService(teamId);
+        return new ResponseEntity<>(teamServices.addTeamService(teamRequest), HttpStatus.OK);
+    }
+    @PutMapping("/")
+    public ResponseEntity<TeamResponse> updateTeam(@RequestBody @Valid TeamRequest teamRequest)
+    {
+        return new ResponseEntity<>(teamServices.updateTeamService(teamRequest),HttpStatus.OK);
+    }
+    @DeleteMapping("/{teamId}")
+    public ResponseEntity<String> removeTeamByTeamId(@PathVariable String teamId)
+    {
+        return new ResponseEntity<>(teamServices.removeTeamByTeamIdService(teamId),HttpStatus.OK);
     }
 }

@@ -1,6 +1,6 @@
-package com.cricketGame.cricketgame.mclass;
+package com.cricketGame.cricketgame.abstractDesign;
 
-import com.cricketGame.cricketgame.Enum.TypeOfMatch;
+import com.cricketGame.cricketgame.enums.TypeOfMatch;
 import com.cricketGame.cricketgame.model.Match;
 
 public class ODI implements MatchType{

@@ -18,7 +18,7 @@ public class Player {
     private String playerName;
     @NotNull
     // Batsman Details
-    private int batsManRating=-1;
+    private int batsManRating;
     private int runsScored;
     private int countOfSix;
     private int ballsPlayed;
@@ -28,7 +28,7 @@ public class Player {
     private int runsConceded;
     private int ballsBowled;
     @NotNull
-    private int bowlerRating=-1;
+    private int bowlerRating;
     private int wicketsTaken;
 
 

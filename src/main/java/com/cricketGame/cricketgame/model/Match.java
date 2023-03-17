@@ -1,7 +1,8 @@
 package com.cricketGame.cricketgame.model;
 
-import com.cricketGame.cricketgame.Enum.TypeOfMatch;
+import com.cricketGame.cricketgame.enums.TypeOfMatch;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 // Make interface  and create different
 @Data
 @Document(collection = "Match")
+@NoArgsConstructor
 public class Match {
     @Id
     private String matchId;
@@ -22,11 +24,13 @@ public class Match {
     private String team2Id;
     // Should Store Id of Inning or The Object Only?
 //    private String team1InningScoreCard;// Create array for multiple innings.
+    private String Winner;
     private ArrayList<String>team1InningScoreCard;
     private ArrayList<String>team2InningScoreCard;
 
-    public Match(String team1Id,String team2Id,String tossChosenByTeam1)
+    public Match(TypeOfMatch matchType,String team1Id,String team2Id,String tossChosenByTeam1)
     {
+        this.matchType=matchType;
         this.team1Id=team1Id;
         this.team2Id=team2Id;
         this.tossChosenByTeam1=tossChosenByTeam1;

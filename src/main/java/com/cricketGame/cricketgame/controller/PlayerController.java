@@ -1,11 +1,16 @@
 package com.cricketGame.cricketgame.controller;
 
+import com.cricketGame.cricketgame.Request.PlayerRequest;
+import com.cricketGame.cricketgame.Response.PlayerResponse;
 import com.cricketGame.cricketgame.model.Player;
 import com.cricketGame.cricketgame.repository.PlayerRepository;
 import com.cricketGame.cricketgame.repository.TeamRepository;
 import com.cricketGame.cricketgame.service.PlayerServices;
 import jakarta.validation.Valid;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -17,42 +22,30 @@ import java.util.Optional;
 public class PlayerController {
     @Autowired
     private PlayerServices playerServices;
-    @Autowired
-    private TeamRepository teamRepository;
-    @Autowired
-    private PlayerRepository playerRepository;
-    @PostMapping("/create")
-    public String createPlayer(@RequestBody @Valid Player player)
-    {
-        playerServices.addPlayer(player);
-        return "";
-    }
-    @GetMapping(value="/createPlayer")
-    public String showCreatePlayer()
-    {
-        return "";
-    }
-    @GetMapping(value="/allPlayers")
-    public List<Player> showAllPlayers()
-    {
-        return playerRepository.findAll();
+
+    @PostMapping("/")
+    public ResponseEntity<PlayerResponse> addPlayer(@RequestBody @Valid PlayerRequest player) {
+        return new ResponseEntity<>(playerServices.addPlayer(player),HttpStatus.OK);
     }
 
-    @GetMapping(value="/allPlayersOfTeam")
-    public ArrayList<Optional<Player>> showPlayersOfTeam(@RequestParam String teamId)
+    @GetMapping(value = "/{playerId}")
+    public ResponseEntity<PlayerResponse> viewPlayer(@PathVariable String playerId) {
+        return new ResponseEntity<>(playerServices.viewPlayer(playerId), HttpStatus.OK);
+    }
+    @PutMapping(value="/")
+    public ResponseEntity<PlayerResponse> updatePlayer(@RequestBody @Valid PlayerRequest player) {
+        return new ResponseEntity<>(playerServices.updatePlayer(player),HttpStatus.OK);
+    }
+
+    @DeleteMapping(value="/{playerId}")
+    public ResponseEntity<String> removePlayer(@PathVariable String playerId)
     {
-        //add validation
-//        if(teamRepository.findBy)
-        ArrayList<Optional<Player>> players=new ArrayList<>();
-        ArrayList<String>playersId=new ArrayList<>();
+        return new ResponseEntity<>(playerServices.removePlayer(playerId),HttpStatus.OK);
+    }
 
-        playersId=teamRepository.findById(teamId).get().getPlayersListId();
-
-        for(String id:playersId)
-        {
-            players.add(playerRepository.findById(id));
-        }
-        return players;
+    @GetMapping(value = "/all")
+    public ResponseEntity<List<PlayerResponse>> showAllPlayers() {
+        return new ResponseEntity<>(playerServices.showAllPlayers(),HttpStatus.OK);
     }
 
 }
