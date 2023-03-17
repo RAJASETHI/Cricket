@@ -1,8 +1,8 @@
 package com.cricketGame.cricketgame.controller;
 
-import com.cricketGame.cricketgame.Request.TeamRequest;
-import com.cricketGame.cricketgame.Response.PlayerResponse;
-import com.cricketGame.cricketgame.Response.TeamResponse;
+import com.cricketGame.cricketgame.request.TeamRequest;
+import com.cricketGame.cricketgame.response.PlayerResponse;
+import com.cricketGame.cricketgame.response.TeamResponse;
 import com.cricketGame.cricketgame.service.TeamServices;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

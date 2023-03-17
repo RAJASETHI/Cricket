@@ -1,8 +1,8 @@
 package com.cricketGame.cricketgame.service;
 
 
-import com.cricketGame.cricketgame.Request.PlayerRequest;
-import com.cricketGame.cricketgame.Response.PlayerResponse;
+import com.cricketGame.cricketgame.request.PlayerRequest;
+import com.cricketGame.cricketgame.response.PlayerResponse;
 import com.cricketGame.cricketgame.model.Player;
 import com.cricketGame.cricketgame.repository.PlayerRepository;
 import com.cricketGame.cricketgame.utils.GenerateRandom;

@@ -1,4 +1,4 @@
-package com.cricketGame.cricketgame.Request;
+package com.cricketGame.cricketgame.request;
 
 import com.cricketGame.cricketgame.enums.TypeOfMatch;
 import lombok.AllArgsConstructor;

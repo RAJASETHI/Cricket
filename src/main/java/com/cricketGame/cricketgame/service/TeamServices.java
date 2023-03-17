@@ -1,8 +1,8 @@
 package com.cricketGame.cricketgame.service;
 
-import com.cricketGame.cricketgame.Request.TeamRequest;
-import com.cricketGame.cricketgame.Response.PlayerResponse;
-import com.cricketGame.cricketgame.Response.TeamResponse;
+import com.cricketGame.cricketgame.request.TeamRequest;
+import com.cricketGame.cricketgame.response.PlayerResponse;
+import com.cricketGame.cricketgame.response.TeamResponse;
 import com.cricketGame.cricketgame.model.Player;
 import com.cricketGame.cricketgame.model.Team;
 import com.cricketGame.cricketgame.repository.TeamRepository;

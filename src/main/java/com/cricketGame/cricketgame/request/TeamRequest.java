@@ -1,4 +1,4 @@
-package com.cricketGame.cricketgame.Request;
+package com.cricketGame.cricketgame.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

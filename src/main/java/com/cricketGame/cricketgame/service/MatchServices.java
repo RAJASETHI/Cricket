@@ -1,7 +1,7 @@
 package com.cricketGame.cricketgame.service;
 
-import com.cricketGame.cricketgame.Request.MatchRequest;
-import com.cricketGame.cricketgame.Response.MatchResponse;
+import com.cricketGame.cricketgame.request.MatchRequest;
+import com.cricketGame.cricketgame.response.MatchResponse;
 import com.cricketGame.cricketgame.model.*;
 import com.cricketGame.cricketgame.repository.InningScoreCardRepository;
 import com.cricketGame.cricketgame.repository.MatchRepository;

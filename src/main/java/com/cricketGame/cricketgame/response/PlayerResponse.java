@@ -1,4 +1,5 @@
-package com.cricketGame.cricketgame.Request;
+package com.cricketGame.cricketgame.response;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,16 +8,17 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PlayerRequest {
+public class PlayerResponse {
+
     private String playerId;
     private String playerName;
-    private int batsManRating=-1;
+    private int batsManRating;
     private int runsScored;
     private int countOfSix;
     private int ballsPlayed;
     private int countOfFour;
     private int runsConceded;
     private int ballsBowled;
-    private int bowlerRating=-1;
+    private int bowlerRating;
     private int wicketsTaken;
 }

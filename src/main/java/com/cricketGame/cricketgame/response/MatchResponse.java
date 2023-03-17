@@ -1,4 +1,4 @@
-package com.cricketGame.cricketgame.Response;
+package com.cricketGame.cricketgame.response;
 
 import com.cricketGame.cricketgame.enums.TypeOfMatch;
 import com.cricketGame.cricketgame.model.InningScoreCard;

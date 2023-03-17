@@ -1,7 +1,7 @@
 package com.cricketGame.cricketgame.service.impl;
 
-import com.cricketGame.cricketgame.Request.MatchRequest;
-import com.cricketGame.cricketgame.Response.MatchResponse;
+import com.cricketGame.cricketgame.request.MatchRequest;
+import com.cricketGame.cricketgame.response.MatchResponse;
 import com.cricketGame.cricketgame.model.Match;
 import com.cricketGame.cricketgame.service.IMatchInterface;
 import com.cricketGame.cricketgame.service.MatchServices;
