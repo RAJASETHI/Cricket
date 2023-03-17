@@ -1,6 +1,5 @@
 package com.cricketGame.cricketgame.service;
 
-import com.cricketGame.cricketgame.model.BatsmanScoreCard;
 import com.cricketGame.cricketgame.model.BowlerScoreCard;
 import com.cricketGame.cricketgame.repository.BowlerScoreCardRepository;
 import lombok.*;

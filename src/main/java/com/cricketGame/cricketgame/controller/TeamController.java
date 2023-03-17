@@ -3,13 +3,8 @@ package com.cricketGame.cricketgame.controller;
 import com.cricketGame.cricketgame.Request.TeamRequest;
 import com.cricketGame.cricketgame.Response.PlayerResponse;
 import com.cricketGame.cricketgame.Response.TeamResponse;
-import com.cricketGame.cricketgame.model.Team;
-import com.cricketGame.cricketgame.repository.TeamRepository;
 import com.cricketGame.cricketgame.service.TeamServices;
 import jakarta.validation.Valid;
-
-import com.cricketGame.cricketgame.model.Player;
-import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/team")
